@@ -1,4 +1,4 @@
-package com.mikehelmick.coderetreat;
+lspackage com.mikehelmick.coderetreat;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -21,32 +21,25 @@
       </plugin>
       
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.3</version>
         <executions>
-            <execution>
-                <id>version1</id>
-                <goals>
-                    <goal>java</goal>
-                </goals>
-                <configuration>
-                    <mainClass>com.mikehelmick.coderetreat.Version</mainClass>
-                    <includePluginDependencies>false</includePluginDependencies>
-                </configuration>
-            </execution>
-            <execution>
-                <id>MyTestApp_B</id>
-                <goals>
-                    <goal>java</goal>
-                </goals>
-                <configuration>
-                    <mainClass>servers.MyTestApp_B</mainClass>
-                    <includePluginDependencies>false</includePluginDependencies>
-                </configuration>
-            </execution>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>com.mikehelmick.coderetreat.Version1</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
         </executions>
-    </plugin>
+      </plugin>
     </plugins>
   
     <resources>

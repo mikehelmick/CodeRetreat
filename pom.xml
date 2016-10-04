@@ -19,6 +19,34 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+            <execution>
+                <id>version1</id>
+                <goals>
+                    <goal>java</goal>
+                </goals>
+                <configuration>
+                    <mainClass>com.mikehelmick.coderetreat.Version</mainClass>
+                    <includePluginDependencies>false</includePluginDependencies>
+                </configuration>
+            </execution>
+            <execution>
+                <id>MyTestApp_B</id>
+                <goals>
+                    <goal>java</goal>
+                </goals>
+                <configuration>
+                    <mainClass>servers.MyTestApp_B</mainClass>
+                    <includePluginDependencies>false</includePluginDependencies>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
     </plugins>
   
     <resources>

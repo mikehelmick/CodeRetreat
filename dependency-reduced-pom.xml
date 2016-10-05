@@ -34,7 +34,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.mikehelmick.coderetreat.Version1</mainClass>
+                  <mainClass>com.mikehelmick.coderetreat.Version2</mainClass>
                 </transformer>
               </transformers>
             </configuration>

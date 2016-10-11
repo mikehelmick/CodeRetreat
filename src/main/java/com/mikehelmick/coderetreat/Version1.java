@@ -1,16 +1,11 @@
 package com.mikehelmick.coderetreat;
 
-import com.google.common.collect.Collections2;
 import java.io.Console;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Version1 {
-  static char[] ALPHABET = {
-      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-      'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 
-      'y', 'z'};
-
+  // Convert a strong to a mutable list of characters.
   static List<Character> newCharList(String string) {
     List<Character> chars = new ArrayList<>();
     for (Character ch : string.toCharArray()) {
@@ -19,7 +14,21 @@ public class Version1 {
     return chars;
   }
 
-  static String linearScan(String chars, Dictionary dict) {
+  // Scan the dictionary, seeing if the suggested plate maps
+  // to that word. Keep searching until you find a word that
+  // adds zero characters, or you reach the end of the dictionary.
+  static String linearScan(String plate, Dictionary dict) {
+    String chars = "";
+    for (char ch : plate.toLowerCase().toCharArray()) {
+      if (Character.isLetter(ch)) {
+        chars = chars + ch;
+      }
+    }
+    if (chars.equals("")) {
+      throw new IllegalArgumentException("");
+    }
+    System.out.println("For characters: " + chars);
+    
     final List<Character> startingChars = newCharList(chars);
     int charsAdded = Integer.MAX_VALUE;
     String originWord = null;
@@ -61,15 +70,7 @@ public class Version1 {
     Console c = System.console();
     String plate = c.readLine("Enter license plate: ");
     while (!plate.equals("")) {
-      String chars = "";
-      for (char ch : plate.toLowerCase().toCharArray()) {
-        if (Character.isLetter(ch)) {
-          chars = chars + ch;
-        }
-      }
-      System.out.println("For characters: " + chars);
-
-      String shortest = linearScan(chars, dict);
+      String shortest = linearScan(plate, dict);
       if (shortest == null) {
         System.out.println("I couldn't find a word.");
       } else {

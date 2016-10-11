@@ -1,0 +1,18 @@
+Samples for the license plate problem.
+
+Version 1 - linear scan on a sorted dictionary.
+Version 2 - linear scan on a sorted dictionary, partitioned by length.
+Version 3 - builds an index of all possible inputs and pre-calculates the answer.
+  - The index takes several minutes to build. (about 5 minutes on Codeenvy)
+  - Then index builder uses 8 threads. Adjust as needed.
+
+This code isn't production quality. Not all exceptions have been handled.
+The core of the algorithm is meant to indicate interview level time limits.
+
+For all versions, you can change the target in the pom.xml file.
+The default is to run version1.
+
+You need to have maven and jdk 1.8.
+
+$ mvn package
+$ java -jar target/CodeRetreat-1.0-SNAPSHOT.jar
